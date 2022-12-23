@@ -4,7 +4,7 @@ HEADER 	:= so_long.h
 
 MLX		:= ./mlx42
 
-MLXLIB 	:= $(MLX)/libmlx42.a -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit
+MLXLIB 	:= $(MLX)/libmlx42.a -lglfw3 -framework Cocoa -framework OpenGL -fsanitize=address -framework IOKit
 
 LIBFT 		:= ./libft
 

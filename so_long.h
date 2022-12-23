@@ -9,10 +9,10 @@
 # include "libft/libft.h"
 
 typedef struct map_check {
-	int p_count;
-	int e_count;
-	int c_count;
-	int x_max;
+	int	p_count;
+	int	e_count;
+	int	c_count;
+	int	x_max;
 	int	y_max;
 } t_mapcheck;
 
@@ -24,7 +24,7 @@ typedef struct s_map {
 void	ft_exit(char *str);
 
 //entire map check
-int	map_check(char **argv);
+int		map_check(char **argv);
 
 //valid map
 int		map_check_file(char **argv);

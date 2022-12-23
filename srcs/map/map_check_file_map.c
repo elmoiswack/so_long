@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map_check_file_map.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dhussain <dhussain@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/23 13:00:17 by dhussain          #+#    #+#             */
+/*   Updated: 2022/12/23 13:02:25 by dhussain         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../so_long.h"
 
 int	map_check_begin(t_mapcheck *mpck, char **map_arr)
 {
 	int	x;
-	int y;
+	int	y;
 
 	x = 0;
 	y = 0;
@@ -86,9 +98,9 @@ int	map_check_checker(t_mapcheck *mpck, char **map_arr, int x, int y)
 int	map_checker_finalcheck(t_mapcheck *mpck)
 {	
 	if (mpck->e_count < 1)
-		ft_exit("map, no exit found!");	
+		ft_exit("map, no exit found!");
 	if (mpck->e_count > 1)
-		ft_exit("map, too many exit found!");	
+		ft_exit("map, too many exit found!");
 	if (mpck->p_count < 1)
 		ft_exit("map, no start found!");
 	if (mpck->p_count > 1)
