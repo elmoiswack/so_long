@@ -16,11 +16,21 @@ typedef struct map_check {
 	int	y_max;
 } t_mapcheck;
 
+typedef struct map_path_check {
+	int	p_x;
+	int	p_y;
+	int	e_x;
+	int	e_y;
+	int	path_e_count;
+	int	path_p_count;
+	int	path_c_count;
+} t_pathcheck;
+
 typedef struct s_map {
 	char	**map;
 }	t_map;
 
-//globally used files
+//globally used functions
 void	ft_exit(char *str);
 
 //entire map check
