@@ -6,7 +6,7 @@
 /*   By: dhussain <dhussain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 13:00:14 by dhussain          #+#    #+#             */
-/*   Updated: 2022/12/23 14:26:11 by dhussain         ###   ########.fr       */
+/*   Updated: 2022/12/27 12:39:05 by dhussain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	map_check_file(char **argv)
 {
 	int			fd;
-	int			i;
+	int			check;
 	t_map		*map;
 	t_mapcheck	*mpck;
 	char		*map_str;
@@ -38,11 +38,12 @@ int	map_check_file(char **argv)
 		free(mpck);
 		ft_exit("malloc\nmalloc has failed!");
 	}
-	i = map_check_begin(mpck, map->map);
-	i = map_check_middle(mpck, map->map);
-	i = map_check_end(mpck, map->map);
-	i = map_checker_finalcheck(mpck);
-	return (i);
+	free(map_str);
+	check = map_check_begin(mpck, map->map);
+	check = map_check_middle(mpck, map->map);
+	check = map_check_end(mpck, map->map);
+	check = map_checker_finalcheck(mpck);
+	return (check);
 }
 
 char	*map_line(int fd)
@@ -71,19 +72,6 @@ char	*map_line(int fd)
 	}
 	if (str[0] == '\n' || str[0] == '\0')
 		ft_exit("map\nmap is invalid!");
+	free(str_gnl);
 	return (str);
-}
-
-char	*ft_strcpy(char *dest, const char *src)
-{
-	int	i;
-
-	i = 0;
-	while (src[i])
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	dest[i] = '\0';
-	return (dest);
 }

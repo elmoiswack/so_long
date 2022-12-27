@@ -19,11 +19,9 @@ typedef struct map_check {
 typedef struct map_path_check {
 	int	p_x;
 	int	p_y;
-	int	e_x;
-	int	e_y;
-	int	path_e_count;
-	int	path_p_count;
-	int	path_c_count;
+	int directions;
+	int	checkpoint_x;
+	int	checkpoint_y;
 } t_pathcheck;
 
 typedef struct s_map {
@@ -44,7 +42,6 @@ int		map_check_begin(t_mapcheck *mpck, char **map_arr);
 int		map_check_middle(t_mapcheck *mpck, char **map_arr);
 int		map_check_end(t_mapcheck *mpck, char **map_arr);
 int		map_checker_finalcheck(t_mapcheck *mpck);
-char	*ft_strcpy(char *dest, const char *src);
 
 
 #endif
