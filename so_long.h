@@ -19,7 +19,6 @@ typedef struct map_check {
 typedef struct map_path_check {
 	int	p_x;
 	int	p_y;
-	int directions;
 	int	checkpoint_x;
 	int	checkpoint_y;
 } t_pathcheck;
@@ -43,5 +42,14 @@ int		map_check_middle(t_mapcheck *mpck, char **map_arr);
 int		map_check_end(t_mapcheck *mpck, char **map_arr);
 int		map_checker_finalcheck(t_mapcheck *mpck);
 
+//valid path
+int		map_check_path(t_pathcheck *phck, t_mapcheck *mpck, char **map_arr);
+void	map_check_path_xplus(t_pathcheck *phck, t_mapcheck *mpck, char **map_arr);
+void	map_check_path_xmin(t_pathcheck *phck, t_mapcheck *mpck, char **map_arr);
+void	map_check_path_yplus(t_pathcheck *phck, t_mapcheck *mpck, char **map_arr);
+void	map_check_path_ymin(t_pathcheck *phck, t_mapcheck *mpck, char **map_arr);
+void	map_check_path_setcheckpoint(t_pathcheck *phck);
+int		map_check_path_points(t_pathcheck *phck, t_mapcheck *mpck, char **map_arr);
+int		find_start_point(t_pathcheck *phck, char **map_arr);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: dhussain <dhussain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 13:00:17 by dhussain          #+#    #+#             */
-/*   Updated: 2022/12/23 13:14:11 by dhussain         ###   ########.fr       */
+/*   Updated: 2022/12/27 16:57:28 by dhussain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,11 +97,11 @@ int	map_check_checker(t_mapcheck *mpck, char **map_arr, int x, int y)
 
 int	map_checker_finalcheck(t_mapcheck *mpck)
 {	
-	if (mpck->e_count < 1)
+	if (mpck->e_count == 0)
 		ft_exit("map\nno exit found!");
 	if (mpck->e_count > 1)
 		ft_exit("map\ntoo many exit found!");
-	if (mpck->p_count < 1)
+	if (mpck->p_count == 0)
 		ft_exit("map\nno start found!");
 	if (mpck->p_count > 1)
 		ft_exit("map\ntoo many start found!");
