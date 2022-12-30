@@ -16,6 +16,8 @@ SRC	:=	./srcs/main.c \
 		./srcs/map/map_check.c \
 		./srcs/map/map_check_file.c \
 		./srcs/map/map_check_file_map.c \
+		./srcs/map/map_check_path.c \
+		./srcs/map/map_check_path_parsing.c \
 		./srcs/ft_exit.c \
 
 OBJ := $(SRC:.c=.o)

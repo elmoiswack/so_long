@@ -6,27 +6,19 @@
 /*   By: dhussain <dhussain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 13:00:14 by dhussain          #+#    #+#             */
-/*   Updated: 2022/12/27 12:39:05 by dhussain         ###   ########.fr       */
+/*   Updated: 2022/12/30 13:55:44 by dhussain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
 
-int	map_check_file(char **argv)
+char	**map_check_file(t_map *map, t_mapcheck *mpck, char **argv)
 {
 	int			fd;
 	int			check;
-	t_map		*map;
-	t_mapcheck	*mpck;
 	char		*map_str;
 
 	fd = open(argv[1], O_RDONLY);
-	map = ft_calloc(1, sizeof(t_map));
-	if (!map)
-		ft_exit("malloc\nmalloc has failed!");
-	mpck = ft_calloc(1, sizeof(t_mapcheck));
-	if (!mpck)
-		ft_exit("malloc\nmalloc has failed!");
 	map_str = map_line(fd);
 	close (fd);
 	map->map = ft_split(map_str, '\n');
@@ -43,7 +35,7 @@ int	map_check_file(char **argv)
 	check = map_check_middle(mpck, map->map);
 	check = map_check_end(mpck, map->map);
 	check = map_checker_finalcheck(mpck);
-	return (check);
+	return (map->map);
 }
 
 char	*map_line(int fd)
