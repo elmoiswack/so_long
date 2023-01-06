@@ -6,7 +6,7 @@
 /*   By: dhussain <dhussain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 13:00:14 by dhussain          #+#    #+#             */
-/*   Updated: 2022/12/30 13:55:44 by dhussain         ###   ########.fr       */
+/*   Updated: 2023/01/06 12:00:33 by dhussain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ char	**map_check_file(t_map *map, t_mapcheck *mpck, char **argv)
 		free(map->map);
 		free(map);
 		free(map_str);
-		free(mpck);
 		ft_exit("malloc\nmalloc has failed!");
 	}
 	free(map_str);

@@ -6,7 +6,7 @@
 /*   By: dhussain <dhussain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 12:59:57 by dhussain          #+#    #+#             */
-/*   Updated: 2022/12/23 13:00:46 by dhussain         ###   ########.fr       */
+/*   Updated: 2023/01/06 11:56:41 by dhussain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,13 @@
 
 int32_t	main(int argc, char *argv[])
 {
-	int	i;
+	char	**map_arr;
+	int	y;
 
-	i = 0;
+	y = 1;
 	if (argc != 2)
 		return (0);
-	i = map_check(argv);
-	if (i == 1)
-		ft_printf("yay");
-	if (i == -1)
-		ft_printf("nay");
+	map_arr = map_check(argv);
+	ft_printf("%s\n", map_arr[y]);
 	return (0);
 }

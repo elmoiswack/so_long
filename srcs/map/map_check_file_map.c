@@ -6,7 +6,7 @@
 /*   By: dhussain <dhussain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 13:00:17 by dhussain          #+#    #+#             */
-/*   Updated: 2022/12/27 16:57:28 by dhussain         ###   ########.fr       */
+/*   Updated: 2023/01/06 11:57:26 by dhussain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,11 +82,15 @@ int	map_check_checker(t_mapcheck *mpck, char **map_arr, int x, int y)
 	else if (map_arr[y][x] == 'E')
 	{
 		mpck->e_count += 1;
+		if (map_check_path(map_arr, x, y) == -1)
+			ft_exit("map, not a valid path to 'E'!");
 		return (1);
 	}
 	else if (map_arr[y][x] == 'C')
 	{
 		mpck->c_count += 1;
+		if (map_check_path(map_arr, x, y) == -1)
+			ft_exit("map, not a valid path to 'C'!");
 		return (1);
 	}
 	else if (map_arr[y][x] == '0' || map_arr[y][x] == '1')

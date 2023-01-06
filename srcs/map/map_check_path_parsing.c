@@ -1,97 +1,69 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   map_check_path_parsing.c                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: dhussain <dhussain@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/27 16:35:36 by dhussain          #+#    #+#             */
-/*   Updated: 2022/12/30 15:15:05 by dhussain         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../../so_long.h"
 
-void	map_check_path_xplus(t_pathcheck *phck, t_mapcheck *mpck, char **map_arr)
-{
-	printf("direc = %i\n", phck->directions);
-	printf("mapy = %c\n", map_arr[phck->p_y - 1][phck->p_x]);
-	while (map_arr[phck->p_y][phck->p_x])
+int	map_check_path_xplus(char **map_arr, t_pathcheck *phck)
+{	
+	while (map_arr[phck->current_y][phck->current_x] != '1')
 	{
-		if ((map_arr[phck->p_y][phck->p_x + 1] == '1') || (map_arr[phck->p_y][phck->p_x + 1] == '4'))
-		{
-			phck->directions -= 1;
-			return ;
-		}	
-		map_arr[phck->p_y][phck->p_x] = '4';
-		phck->directions = 4;
-		if (((map_arr[phck->p_y - 1][phck->p_x] != '1') && (map_arr[phck->p_y - 1][phck->p_x] != '4'))
-			|| ((map_arr[phck->p_y + 1][phck->p_x] != '1') && (map_arr[phck->p_y + 1][phck->p_x] != '4')))
-			if (map_check_path_setcheckpoint(phck, map_arr) == 1)
-				return ;
-		phck->p_x++;
-		map_check_path_points(phck, mpck, map_arr);
+		if (map_arr[phck->current_y][phck->current_x + 1] == '1')
+			break ;
+		phck->current_x++;
+		if (map_arr[phck->current_y][phck->current_x] == 'P')
+			return (1);
 	}
-	printf("direc = %i\n", phck->directions);
-	return ;
+	if (map_arr[phck->current_y + 1][phck->current_x] != '1')
+		return (map_check_path_yplus(map_arr, phck));
+	if (map_arr[phck->current_y - 1][phck->current_x] != '1')
+		return (map_check_path_ymin(map_arr, phck));
+	return (-1);
 }
 
-void	map_check_path_xmin(t_pathcheck *phck, t_mapcheck *mpck, char **map_arr)
+int	map_check_path_xmin(char **map_arr, t_pathcheck *phck)
 {
-	while (map_arr[phck->p_y][phck->p_x])
+	while (map_arr[phck->current_y][phck->current_x] != '1')
 	{
-		if ((map_arr[phck->p_y][phck->p_x - 1] == '1') || (map_arr[phck->p_y][phck->p_x - 1] == '4'))
-		{
-			phck->directions -= 1;
-			return ;
-		}
-		map_arr[phck->p_y][phck->p_x] = '4';
-		phck->directions = 4;
-		if (((map_arr[phck->p_y + 1][phck->p_x] != '1') && (map_arr[phck->p_y + 1][phck->p_x] != '4'))
-			|| ((map_arr[phck->p_y - 1][phck->p_x] != '1') && (map_arr[phck->p_y - 1][phck->p_x] != '4')))
-			map_check_path_setcheckpoint(phck, map_arr);
-		phck->p_x--;
-		map_check_path_points(phck, mpck, map_arr);
+		if (map_arr[phck->current_y][phck->current_x - 1] == '1')
+			break ;
+		phck->current_x--;
+		if (map_arr[phck->current_y][phck->current_x] == 'P')
+			return (1);
 	}
-	return ;
+	if (map_arr[phck->current_y + 1][phck->current_x] != '1')
+		return (map_check_path_yplus(map_arr, phck));
+	if (map_arr[phck->current_y - 1][phck->current_x] != '1')
+		return (map_check_path_ymin(map_arr, phck));
+	return (-1);
 }
 
-void	map_check_path_yplus(t_pathcheck *phck, t_mapcheck *mpck, char **map_arr)
+int	map_check_path_yplus(char **map_arr, t_pathcheck *phck)
 {
-	while (map_arr[phck->p_y][phck->p_x])
+	while (map_arr[phck->current_y][phck->current_x] != '1')
 	{
-		if ((map_arr[phck->p_y + 1][phck->p_x] == '1') || (map_arr[phck->p_y + 1][phck->p_x] == '4'))
-		{
-			phck->directions -= 1;
-			return ;
-		}
-		map_arr[phck->p_y][phck->p_x] = '4';
-		phck->directions = 4;
-		if (((map_arr[phck->p_y][phck->p_x + 1] != '1') && (map_arr[phck->p_y][phck->p_x + 1] != '4'))
-			|| ((map_arr[phck->p_y][phck->p_x - 1] != '1') && (map_arr[phck->p_y][phck->p_x - 1] != '4')))
-			map_check_path_setcheckpoint(phck, map_arr);
-		phck->p_y++;
-		map_check_path_points(phck, mpck, map_arr);
+		if (map_arr[phck->current_y + 1][phck->current_x] == '1')
+			break ;
+		phck->current_y++;
+		if (map_arr[phck->current_y][phck->current_x] == 'P')
+			return (1);
 	}
-	return ;
+	if (map_arr[phck->current_y][phck->current_x + 1] != '1')
+		return (map_check_path_xplus(map_arr, phck));
+	if (map_arr[phck->current_y][phck->current_x - 1] != '1')
+		return (map_check_path_xmin(map_arr, phck));
+	return (-1);
 }
 
-void	map_check_path_ymin(t_pathcheck *phck, t_mapcheck *mpck, char **map_arr)
+int	map_check_path_ymin(char **map_arr, t_pathcheck *phck)
 {
-	while (map_arr[phck->p_y][phck->p_x])
+	while (map_arr[phck->current_y][phck->current_x] != '1')
 	{
-		if ((map_arr[phck->p_y - 1][phck->p_x] == '1') || (map_arr[phck->p_y - 1][phck->p_x] == '4'))
-		{
-			phck->directions -= 1;
-			return ;
-		}
-		map_arr[phck->p_y][phck->p_x] = '4';
-		phck->directions = 4;
-		if (((map_arr[phck->p_y][phck->p_x + 1] != '1') && (map_arr[phck->p_y][phck->p_x + 1] != '4'))
-			|| ((map_arr[phck->p_y][phck->p_x - 1] != '1') && (map_arr[phck->p_y][phck->p_x - 1] != '4')))
-			map_check_path_setcheckpoint(phck, map_arr);
-		phck->p_y--;
-		map_check_path_points(phck, mpck, map_arr);
+		if (map_arr[phck->current_y - 1][phck->current_x] == '1')
+			break ;
+		phck->current_y--;
+		if (map_arr[phck->current_y][phck->current_x] == 'P')
+			return (1);
 	}
-	return ;
+	if (map_arr[phck->current_y][phck->current_x + 1] != '1')
+		return (map_check_path_xplus(map_arr, phck));
+	if (map_arr[phck->current_y][phck->current_x - 1] != '1')
+		return (map_check_path_xmin(map_arr, phck));
+	return (-1);
 }
