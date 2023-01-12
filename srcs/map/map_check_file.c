@@ -6,7 +6,7 @@
 /*   By: dhussain <dhussain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 13:00:14 by dhussain          #+#    #+#             */
-/*   Updated: 2023/01/12 13:28:19 by dhussain         ###   ########.fr       */
+/*   Updated: 2023/01/12 15:26:54 by dhussain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,13 @@ char	**map_check_file(t_map *map, t_mapcheck *mpck, char **argv)
 	int			fd;
 	int			check;
 	char		*map_str;
+	char		*str;
 
 	fd = open(argv[1], O_RDONLY);
-	map_str = map_line(fd);
+	str = ft_calloc(1, sizeof(char));
+	if (!str)
+		ft_exit("malloc\nmalloc has failed in map_line!");
+	map_str = map_line(fd, str);
 	close (fd);
 	map->map = ft_split(map_str, '\n');
 	if (!map->map)
@@ -37,17 +41,13 @@ char	**map_check_file(t_map *map, t_mapcheck *mpck, char **argv)
 	return (map->map);
 }
 
-char	*map_line(int fd)
+char	*map_line(int fd, char *str)
 {
 	char	*str_gnl;
-	char	*str;
 
-	str = ft_calloc(1, sizeof(char));
-	if (!str)
-		ft_exit("malloc\nmalloc has failed in map_line!");
 	str_gnl = get_next_line(fd);
 	if (!str_gnl)
-		ft_exit("malloc\nmalloc has failed in map_line!");
+		ft_exit("get next line\nget next line has failed in map_line!");
 	while (str_gnl)
 	{
 		str = ft_strjoin(str, str_gnl);
@@ -55,7 +55,7 @@ char	*map_line(int fd)
 		{
 			free(str);
 			free(str_gnl);
-			ft_exit("malloc\nmalloc has failed in map_line!");
+			ft_exit("strjoin\nstrjoin has failed in map_line!");
 		}
 		str_gnl = get_next_line(fd);
 		if (str_gnl && str_gnl[0] == '\n')
