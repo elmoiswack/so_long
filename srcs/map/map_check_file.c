@@ -6,7 +6,7 @@
 /*   By: dhussain <dhussain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 13:00:14 by dhussain          #+#    #+#             */
-/*   Updated: 2023/01/06 12:00:33 by dhussain         ###   ########.fr       */
+/*   Updated: 2023/01/12 13:28:19 by dhussain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	**map_check_file(t_map *map, t_mapcheck *mpck, char **argv)
 		free(map->map);
 		free(map);
 		free(map_str);
-		ft_exit("malloc\nmalloc has failed!");
+		ft_exit("malloc\nmalloc has failed in map_check_file!");
 	}
 	free(map_str);
 	check = map_check_begin(mpck, map->map);
@@ -44,10 +44,10 @@ char	*map_line(int fd)
 
 	str = ft_calloc(1, sizeof(char));
 	if (!str)
-		ft_exit("malloc\nmalloc has failed!");
+		ft_exit("malloc\nmalloc has failed in map_line!");
 	str_gnl = get_next_line(fd);
 	if (!str_gnl)
-		ft_exit("malloc\nmalloc has failed!");
+		ft_exit("malloc\nmalloc has failed in map_line!");
 	while (str_gnl)
 	{
 		str = ft_strjoin(str, str_gnl);
@@ -55,14 +55,14 @@ char	*map_line(int fd)
 		{
 			free(str);
 			free(str_gnl);
-			ft_exit("malloc\nmalloc has failed!");
+			ft_exit("malloc\nmalloc has failed in map_line!");
 		}
 		str_gnl = get_next_line(fd);
 		if (str_gnl && str_gnl[0] == '\n')
-			ft_exit("map\nmap is invalid!");
+			ft_exit("map\nmap is invalid in map_line!");
 	}
 	if (str[0] == '\n' || str[0] == '\0')
-		ft_exit("map\nmap is invalid!");
+		ft_exit("map\nmap is invalid in map_line!");
 	free(str_gnl);
 	return (str);
 }

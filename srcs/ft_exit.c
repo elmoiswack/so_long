@@ -6,7 +6,7 @@
 /*   By: dhussain <dhussain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 13:00:04 by dhussain          #+#    #+#             */
-/*   Updated: 2023/01/06 12:03:42 by dhussain         ###   ########.fr       */
+/*   Updated: 2023/01/12 11:47:25 by dhussain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,5 @@
 void	ft_exit(char *str)
 {
 	ft_printf("Error in %s\n", str);
-	exit(-1);
+	exit(EXIT_FAILURE);
 }

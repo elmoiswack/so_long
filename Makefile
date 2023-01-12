@@ -19,12 +19,15 @@ SRC	:=	./srcs/main.c \
 		./srcs/map/map_check_path.c \
 		./srcs/map/map_check_path_parsing.c \
 		./srcs/ft_exit.c \
+		./srcs/ft_free.c \
 
 OBJ := $(SRC:.c=.o)
 
 CC	:=	gcc
 
 CFLAGS	:=	-Wall -Wextra -Werror
+
+all: libs $(NAME)
 
 libs:
 	$(MAKE) -C libft
@@ -35,8 +38,6 @@ $(NAME): $(OBJ)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
-
-all: libs $(NAME) 
 
 clean:
 	rm -f $(OBJ)

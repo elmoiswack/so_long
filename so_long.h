@@ -21,12 +21,12 @@ typedef struct map_check {
 } t_mapcheck;
 
 typedef struct map_path_check {
-	int current_x;
-	int current_y;
+	int destination_x;
+	int destination_y;
 	int	p_x;
 	int	p_y;
-	int	checkpoint_x;
-	int	checkpoint_y;
+	int	x;
+	int	y;
 } t_pathcheck;
 
 //globally used functions
@@ -34,6 +34,9 @@ void	ft_exit(char *str);
 
 //entire map check
 char	**map_check(char **argv);
+
+//free functions
+void	ft_free_2d_array(char **array, int y);
 
 //valid map
 char	**map_check_file(t_map *map, t_mapcheck *mpck, char **argv);
@@ -45,11 +48,10 @@ int		map_check_end(t_mapcheck *mpck, char **map_arr);
 int		map_checker_finalcheck(t_mapcheck *mpck);
 
 //valid path
-int		map_check_path(char **map_arr, int x, int y);
-int		map_check_p(char **map_arr, t_pathcheck *phck);
-int		map_check_path_xplus(char **map_arr, t_pathcheck *phck);
-int		map_check_path_xmin(char **map_arr, t_pathcheck *phck);
-int		map_check_path_yplus(char **map_arr, t_pathcheck *phck);
-int		map_check_path_ymin(char **map_arr, t_pathcheck *phck);
+int		map_check_path(t_mapcheck *mpck, char **map_arr, int x, int y);
+int		map_check_p(t_mapcheck *mpck, char **map_arr, t_pathcheck *phck);
+char 	**map_copy_function(char **map_arr, t_mapcheck *mpck);
+int		map_check_valid_path(t_pathcheck *phck, char **map_copy, int x, int y);
+
 
 #endif
