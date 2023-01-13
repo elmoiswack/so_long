@@ -6,24 +6,23 @@
 /*   By: dhussain <dhussain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 12:59:57 by dhussain          #+#    #+#             */
-/*   Updated: 2023/01/12 15:45:13 by dhussain         ###   ########.fr       */
+/*   Updated: 2023/01/13 14:46:55 by dhussain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
+#define WIDTH 256
+#define HEIGHT 256
+
 int32_t	main(int argc, char *argv[])
 {
-	char	**map_arr;
-	int		y;
+	t_map		*map;
 
-	y = 0;
+	map = ft_calloc(1, sizeof(t_map));
+	if (!map)
+		ft_exit("malloc\nmalloc has failed in main!");
 	arg_checks(argc, argv);
-	map_arr = map_check(argv);
-	while (map_arr[y])
-	{
-		ft_printf("%s\n", map_arr[y]);
-		y++;
-	}
-	return (0);
+	map->map = map_check(argv, map);
+	
 }

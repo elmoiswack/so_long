@@ -6,7 +6,7 @@
 /*   By: dhussain <dhussain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 15:33:53 by dhussain          #+#    #+#             */
-/*   Updated: 2023/01/12 15:41:21 by dhussain         ###   ########.fr       */
+/*   Updated: 2023/01/13 15:52:29 by dhussain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,21 @@
 # include "libft/libft.h"
 
 typedef struct s_map {
-	char	**map;
+	char		**map;
+	mlx_t		*mlx;
 }	t_map;
+
+typedef struct s_images {
+	void		*player;
+	void		*exit;
+	void		*coin;
+	void		*walls;
+	void		*floor;
+	void		*chest;
+	mlx_t		*mlx;
+	t_pathcheck *phck;
+	t_mapcheck	*mpck;
+}	t_image;
 
 typedef struct map_check {
 	int	p_count;
@@ -47,7 +60,7 @@ void	ft_exit(char *str);
 void	ft_free_2d_array(char **array, int y);
 
 //valid map
-char	**map_check(char **argv);
+char	**map_check(char **argv, t_map *map);
 char	**map_check_file(t_map *map, t_mapcheck *mpck, char **argv);
 char	*map_line(int fd, char *str);
 int		map_check_checker(t_mapcheck *mpck, char **map_arr, int x, int y);
@@ -61,5 +74,9 @@ int		map_check_p(t_mapcheck *mpck, char **map_arr, t_pathcheck *phck);
 char 	**map_copy_function(char **map_arr, t_mapcheck *mpck);
 int		map_check_valid_path(t_pathcheck *phck, char **map_copy, int x, int y);
 
+//images
+void	images(t_map *map);
+void	open_images(t_image *image);
+void	image_window(t_image *image, char **map_arr);
 
 #endif
