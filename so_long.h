@@ -6,7 +6,7 @@
 /*   By: dhussain <dhussain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 15:33:53 by dhussain          #+#    #+#             */
-/*   Updated: 2023/01/13 15:52:29 by dhussain         ###   ########.fr       */
+/*   Updated: 2023/01/17 17:42:48 by dhussain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,23 +19,6 @@
 # include <stdio.h>
 # include "mlx42/include/MLX42/MLX42.h"
 # include "libft/libft.h"
-
-typedef struct s_map {
-	char		**map;
-	mlx_t		*mlx;
-}	t_map;
-
-typedef struct s_images {
-	void		*player;
-	void		*exit;
-	void		*coin;
-	void		*walls;
-	void		*floor;
-	void		*chest;
-	mlx_t		*mlx;
-	t_pathcheck *phck;
-	t_mapcheck	*mpck;
-}	t_image;
 
 typedef struct map_check {
 	int	p_count;
@@ -52,8 +35,28 @@ typedef struct map_path_check {
 	int	p_y;
 } t_pathcheck;
 
+typedef struct s_images {
+	void		*player;
+	void		*exit;
+	void		*coin;
+	void		*walls;
+	void		*floor;
+	void		*chest;
+	t_pathcheck *phck;
+	t_mapcheck	*mpck;
+}	t_image;
+
+typedef struct s_map {
+	char		**map;
+	int			x;
+	int			y;
+	mlx_t		*mlx;
+	t_image		*image;
+}	t_map;
+
 //1 time functions
 int		arg_checks(int argc, char *argv[]);
+void	window_creation(t_map *map);
 
 //globally used functions
 void	ft_exit(char *str);
@@ -77,6 +80,8 @@ int		map_check_valid_path(t_pathcheck *phck, char **map_copy, int x, int y);
 //images
 void	images(t_map *map);
 void	open_images(t_image *image);
-void	image_window(t_image *image, char **map_arr);
+void	delete_images(t_map *map, t_image *image);
+void	image_window(t_image *image, char **map_arr, t_map *map);
+void	texture_image(t_image *image, t_map *map);
 
 #endif

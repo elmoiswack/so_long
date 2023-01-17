@@ -6,14 +6,11 @@
 /*   By: dhussain <dhussain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 12:59:57 by dhussain          #+#    #+#             */
-/*   Updated: 2023/01/13 14:46:55 by dhussain         ###   ########.fr       */
+/*   Updated: 2023/01/17 17:42:02 by dhussain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
-
-#define WIDTH 256
-#define HEIGHT 256
 
 int32_t	main(int argc, char *argv[])
 {
@@ -24,5 +21,6 @@ int32_t	main(int argc, char *argv[])
 		ft_exit("malloc\nmalloc has failed in main!");
 	arg_checks(argc, argv);
 	map->map = map_check(argv, map);
-	
+	window_creation(map);
+	exit(EXIT_SUCCESS);
 }

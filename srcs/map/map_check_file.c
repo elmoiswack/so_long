@@ -6,7 +6,7 @@
 /*   By: dhussain <dhussain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 13:00:14 by dhussain          #+#    #+#             */
-/*   Updated: 2023/01/12 15:26:54 by dhussain         ###   ########.fr       */
+/*   Updated: 2023/01/17 14:10:11 by dhussain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 char	**map_check_file(t_map *map, t_mapcheck *mpck, char **argv)
 {
 	int			fd;
-	int			check;
 	char		*map_str;
 	char		*str;
 
@@ -34,10 +33,10 @@ char	**map_check_file(t_map *map, t_mapcheck *mpck, char **argv)
 		ft_exit("malloc\nmalloc has failed in map_check_file!");
 	}
 	free(map_str);
-	check = map_check_begin(mpck, map->map);
-	check = map_check_middle(mpck, map->map);
-	check = map_check_end(mpck, map->map);
-	check = map_checker_finalcheck(mpck);
+	map_check_begin(mpck, map->map);
+	map_check_middle(mpck, map->map);
+	map_check_end(mpck, map->map);
+	map_checker_finalcheck(mpck);
 	return (map->map);
 }
 

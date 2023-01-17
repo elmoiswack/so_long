@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_check.c                                        :+:      :+:    :+:   */
+/*   texture_to_image.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dhussain <dhussain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/23 13:00:09 by dhussain          #+#    #+#             */
-/*   Updated: 2023/01/17 17:42:16 by dhussain         ###   ########.fr       */
+/*   Created: 2023/01/17 16:39:06 by dhussain          #+#    #+#             */
+/*   Updated: 2023/01/17 16:44:22 by dhussain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
 
-char	**map_check(char **argv, t_map	*map)
+void	texture_image(t_image *image, t_map *map)
 {
-	t_mapcheck	*mpck;
-	
-	mpck = ft_calloc(1, sizeof(t_mapcheck));
-	if (!mpck)
-		ft_exit("malloc\nmalloc has failed map_check!");
-	map->map = map_check_file(map, mpck, argv);
-	return (map->map);
+	image->coin = mlx_texture_to_image(map->mlx, image->coin);
+	image->player = mlx_texture_to_image(map->mlx, image->player);
+	image->exit = mlx_texture_to_image(map->mlx, image->exit);
+	image->floor = mlx_texture_to_image(map->mlx, image->floor);
+	image->walls = mlx_texture_to_image(map->mlx, image->walls);
+	image->chest = mlx_texture_to_image(map->mlx, image->chest);
+	return ;
 }
