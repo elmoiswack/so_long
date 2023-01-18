@@ -6,7 +6,7 @@
 /*   By: dhussain <dhussain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 13:49:48 by dhussain          #+#    #+#             */
-/*   Updated: 2023/01/12 15:36:18 by dhussain         ###   ########.fr       */
+/*   Updated: 2023/01/18 15:02:08 by dhussain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	map_check_path(t_mapcheck *mpck, char **map_arr, int x, int y)
 	char		**map_copy;
 	int			start_x;
 	int			start_y;
-	
+
 	phck = ft_calloc(1, sizeof(t_pathcheck));
 	if (!phck)
 		ft_exit("malloc\nmalloc has failed in map_check_path!");
@@ -59,7 +59,7 @@ int	map_check_p(t_mapcheck *mpck, char **map_arr, t_pathcheck *phck)
 	return (-1);
 }
 
-char 	**map_copy_function(char **map_arr, t_mapcheck *mpck)
+char	**map_copy_function(char **map_arr, t_mapcheck *mpck)
 {
 	int		x;
 	int		y;

@@ -6,13 +6,13 @@
 /*   By: dhussain <dhussain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 14:49:32 by dhussain          #+#    #+#             */
-/*   Updated: 2023/01/12 14:54:24 by dhussain         ###   ########.fr       */
+/*   Updated: 2023/01/18 15:01:40 by dhussain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
 
-int	map_check_valid_path(t_pathcheck *phck, char **map_copy, int x, int y)
+int map_check_valid_path(t_pathcheck *phck, char **map_copy, int x, int y)
 {
     if (x == phck->destination_x && y == phck->destination_y)
         return (1);

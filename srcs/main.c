@@ -6,7 +6,7 @@
 /*   By: dhussain <dhussain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 12:59:57 by dhussain          #+#    #+#             */
-/*   Updated: 2023/01/17 17:42:02 by dhussain         ###   ########.fr       */
+/*   Updated: 2023/01/18 15:38:53 by dhussain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,16 @@
 int32_t	main(int argc, char *argv[])
 {
 	t_map		*map;
+	t_mapcheck	*mpck;
 
+	mpck = ft_calloc(1, sizeof(t_mapcheck));
+	if (!mpck)
+		ft_exit("malloc\nmalloc has failed map_check!");
 	map = ft_calloc(1, sizeof(t_map));
 	if (!map)
 		ft_exit("malloc\nmalloc has failed in main!");
 	arg_checks(argc, argv);
-	map->map = map_check(argv, map);
-	window_creation(map);
+	map->map = map_check_file(map, mpck, argv);
+	window_creation(map, mpck);
 	exit(EXIT_SUCCESS);
 }

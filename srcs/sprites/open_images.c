@@ -6,7 +6,7 @@
 /*   By: dhussain <dhussain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 14:59:43 by dhussain          #+#    #+#             */
-/*   Updated: 2023/01/17 16:32:18 by dhussain         ###   ########.fr       */
+/*   Updated: 2023/01/18 15:06:55 by dhussain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	open_images_coin(t_image *image)
 {
 	image->coin = mlx_load_png("./images/coin.png");
 	if (!image->coin)
-		ft_exit("coin\nfailed to load coin!\n");
+		ft_exit("loading coin!\n");
 	return ;
 }
 
@@ -56,5 +56,5 @@ void	open_images(t_image *image)
 	open_images_coin(image);
 	open_images_floor_exit(image);
 	open_images_walls(image);
-	return ;	
+	return ;
 }

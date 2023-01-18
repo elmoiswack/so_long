@@ -6,7 +6,7 @@
 /*   By: dhussain <dhussain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 15:38:58 by dhussain          #+#    #+#             */
-/*   Updated: 2023/01/12 15:57:20 by dhussain         ###   ########.fr       */
+/*   Updated: 2023/01/18 15:02:39 by dhussain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	arg_checks(int argc, char *argv[])
 	char	*str;
 	int		index_1;
 	int		index_2;
-	
+
 	index_1 = ft_strlen(argv[1]);
 	index_1 -= 4;
 	index_2 = 0;

@@ -14,7 +14,6 @@ HEADERS	:=	-I $(LIBFT) -I includes -I $(MLX)/includes
 
 SRC	:=	./srcs/main.c \
 		./srcs/argument_checks.c \
-		./srcs/map/map_check.c \
 		./srcs/map/map_check_file.c \
 		./srcs/map/map_check_file_map.c \
 		./srcs/map/map_check_path.c \

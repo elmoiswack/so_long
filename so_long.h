@@ -6,7 +6,7 @@
 /*   By: dhussain <dhussain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 15:33:53 by dhussain          #+#    #+#             */
-/*   Updated: 2023/01/17 17:42:48 by dhussain         ###   ########.fr       */
+/*   Updated: 2023/01/18 15:48:31 by dhussain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,6 @@ typedef struct s_images {
 	void		*walls;
 	void		*floor;
 	void		*chest;
-	t_pathcheck *phck;
-	t_mapcheck	*mpck;
 }	t_image;
 
 typedef struct s_map {
@@ -56,14 +54,13 @@ typedef struct s_map {
 
 //1 time functions
 int		arg_checks(int argc, char *argv[]);
-void	window_creation(t_map *map);
+void	window_creation(t_map *map, t_mapcheck *mpck);
 
 //globally used functions
 void	ft_exit(char *str);
 void	ft_free_2d_array(char **array, int y);
 
 //valid map
-char	**map_check(char **argv, t_map *map);
 char	**map_check_file(t_map *map, t_mapcheck *mpck, char **argv);
 char	*map_line(int fd, char *str);
 int		map_check_checker(t_mapcheck *mpck, char **map_arr, int x, int y);
@@ -78,10 +75,10 @@ char 	**map_copy_function(char **map_arr, t_mapcheck *mpck);
 int		map_check_valid_path(t_pathcheck *phck, char **map_copy, int x, int y);
 
 //images
-void	images(t_map *map);
+void	images(t_map *map, t_mapcheck *mpck);
 void	open_images(t_image *image);
 void	delete_images(t_map *map, t_image *image);
-void	image_window(t_image *image, char **map_arr, t_map *map);
+void	image_window(t_image *image, char **map_arr, t_map *map, t_mapcheck *mpck);
 void	texture_image(t_image *image, t_map *map);
 
 #endif
