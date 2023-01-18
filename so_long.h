@@ -6,7 +6,7 @@
 /*   By: dhussain <dhussain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 15:33:53 by dhussain          #+#    #+#             */
-/*   Updated: 2023/01/18 15:48:31 by dhussain         ###   ########.fr       */
+/*   Updated: 2023/01/18 20:50:26 by dhussain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,6 @@ int		map_check_valid_path(t_pathcheck *phck, char **map_copy, int x, int y);
 //images
 void	images(t_map *map, t_mapcheck *mpck);
 void	open_images(t_image *image);
-void	delete_images(t_map *map, t_image *image);
 void	image_window(t_image *image, char **map_arr, t_map *map, t_mapcheck *mpck);
 void	texture_image(t_image *image, t_map *map);
 

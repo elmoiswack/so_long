@@ -24,7 +24,6 @@ SRC	:=	./srcs/main.c \
 		./srcs/sprites/images.c \
 		./srcs/sprites/image_to_window.c \
 		./srcs/sprites/open_images.c \
-		./srcs/sprites/delete_images.c \
 		./srcs/sprites/texture_to_image.c \
 
 
