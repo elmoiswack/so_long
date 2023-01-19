@@ -6,7 +6,7 @@
 /*   By: dhussain <dhussain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 13:49:48 by dhussain          #+#    #+#             */
-/*   Updated: 2023/01/18 15:02:08 by dhussain         ###   ########.fr       */
+/*   Updated: 2023/01/19 09:47:14 by dhussain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int	map_check_path(t_mapcheck *mpck, char **map_arr, int x, int y)
 		ft_free_2d_array(map_copy, mpck->y_max);
 		return (1);
 	}
+	ft_free_2d_array(map_copy, mpck->y_max);
 	return (-1);
 }
 

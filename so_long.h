@@ -6,7 +6,7 @@
 /*   By: dhussain <dhussain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 15:33:53 by dhussain          #+#    #+#             */
-/*   Updated: 2023/01/18 20:50:26 by dhussain         ###   ########.fr       */
+/*   Updated: 2023/01/19 16:30:44 by dhussain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,10 @@ typedef struct s_map {
 	char		**map;
 	int			x;
 	int			y;
+	int			window_x;
+	int			window_y;
+	int			window_center_x;
+	int			window_center_y;
 	mlx_t		*mlx;
 	t_image		*image;
 }	t_map;
@@ -77,7 +81,8 @@ int		map_check_valid_path(t_pathcheck *phck, char **map_copy, int x, int y);
 //images
 void	images(t_map *map, t_mapcheck *mpck);
 void	open_images(t_image *image);
-void	image_window(t_image *image, char **map_arr, t_map *map, t_mapcheck *mpck);
 void	texture_image(t_image *image, t_map *map);
+void	image_window(t_image *image, char **map_arr, t_map *map, t_mapcheck *mpck);
+void	place_floors_walls(t_image *image, char **map_arr, t_map *map, t_mapcheck *mpck);
 
 #endif
