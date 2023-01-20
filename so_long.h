@@ -6,7 +6,7 @@
 /*   By: dhussain <dhussain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 15:33:53 by dhussain          #+#    #+#             */
-/*   Updated: 2023/01/19 16:30:44 by dhussain         ###   ########.fr       */
+/*   Updated: 2023/01/20 23:00:17 by dhussain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,20 +45,24 @@ typedef struct s_images {
 }	t_image;
 
 typedef struct s_map {
-	char		**map;
-	int			x;
-	int			y;
-	int			window_x;
-	int			window_y;
-	int			window_center_x;
-	int			window_center_y;
-	mlx_t		*mlx;
-	t_image		*image;
+	char			**map;
+	int				x;
+	int				y;
+	int				window_x;
+	int				window_y;
+	int				window_center_x;
+	int				window_center_y;
+	mlx_key_data_t	keydata;
+	t_pathcheck		*phck;
+	mlx_image_t		*mlx_image;
+	mlx_t			*mlx;
+	t_image			*image;
 }	t_map;
 
 //1 time functions
 int		arg_checks(int argc, char *argv[]);
 void	window_creation(t_map *map, t_mapcheck *mpck);
+void	button_key_hook(void *param);
 
 //globally used functions
 void	ft_exit(char *str);

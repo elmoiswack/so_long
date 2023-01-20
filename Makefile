@@ -25,6 +25,7 @@ SRC	:=	./srcs/main.c \
 		./srcs/sprites/image_to_window.c \
 		./srcs/sprites/open_images.c \
 		./srcs/sprites/texture_to_image.c \
+		./srcs/key_hook.c \
 
 
 OBJ := $(SRC:.c=.o)
