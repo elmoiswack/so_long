@@ -6,7 +6,7 @@
 /*   By: dhussain <dhussain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 11:59:40 by dhussain          #+#    #+#             */
-/*   Updated: 2023/01/23 18:07:47 by dhussain         ###   ########.fr       */
+/*   Updated: 2023/01/23 18:33:29 by dhussain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,22 @@ void	button_key_hook(void *param)
 	map = param;
 	if (mlx_is_key_down(map->mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(map->mlx);
-	if (mlx_is_key_down(map->mlx, MLX_KEY_D) && map->map[map->map_player_y][map->map_player_x + 1] != '1')
+	else if (mlx_is_key_down(map->mlx, MLX_KEY_D) && map->map[map->map_player_y][map->map_player_x + 1] != '1')
 	{
 		map->player->instances[0].x += 31;
 		map->map_player_x += 1;
 	}
-	if (mlx_is_key_down(map->mlx, MLX_KEY_A) && map->map[map->map_player_y][map->map_player_x - 1] != '1')
+	else if (mlx_is_key_down(map->mlx, MLX_KEY_A) && map->map[map->map_player_y][map->map_player_x - 1] != '1')
 	{
 		map->player->instances[0].x -= 31;
 		map->map_player_x -= 1;
 	}
-	if (mlx_is_key_down(map->mlx, MLX_KEY_S) && map->map[map->map_player_y + 1][map->map_player_x] != '1')
+	else if (mlx_is_key_down(map->mlx, MLX_KEY_S) && map->map[map->map_player_y + 1][map->map_player_x] != '1')
 	{
 		map->player->instances[0].y += 31;
 		map->map_player_y += 1;
 	}	
-	if (mlx_is_key_down(map->mlx, MLX_KEY_W) && map->map[map->map_player_y - 1][map->map_player_x] != '1')
+	else if (mlx_is_key_down(map->mlx, MLX_KEY_W) && map->map[map->map_player_y - 1][map->map_player_x] != '1')
 	{
 		map->player->instances[0].y -= 31;
 		map->map_player_y -= 1;

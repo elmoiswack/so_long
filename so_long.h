@@ -6,7 +6,7 @@
 /*   By: dhussain <dhussain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 15:33:53 by dhussain          #+#    #+#             */
-/*   Updated: 2023/01/23 17:35:10 by dhussain         ###   ########.fr       */
+/*   Updated: 2023/01/23 18:24:49 by dhussain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,12 @@ typedef struct s_map {
 	int				window_center_y;
 	int				map_player_x;
 	int				map_player_y;
-	mlx_image_t			*player;
-	mlx_image_t			*exit;
-	mlx_image_t			*coin;
-	mlx_image_t			*walls;
-	mlx_image_t			*floor;
-	mlx_image_t			*chest;
+	mlx_image_t		*player;
+	mlx_image_t		*exit;
+	mlx_image_t		*coin;
+	mlx_image_t		*walls;
+	mlx_image_t		*floor;
+	mlx_image_t		*chest;
 	mlx_key_data_t	keydata;
 	mlx_image_t		*mlx_image;
 	mlx_t			*mlx;
