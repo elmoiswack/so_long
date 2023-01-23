@@ -32,7 +32,7 @@ OBJ := $(SRC:.c=.o)
 
 CC	:=	gcc
 
-CFLAGS	:=	-Wall -Wextra -Werror
+CFLAGS	:=	-g -Wall -Wextra -Werror
 
 all: libs $(NAME)
 

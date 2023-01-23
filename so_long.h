@@ -6,7 +6,7 @@
 /*   By: dhussain <dhussain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 15:33:53 by dhussain          #+#    #+#             */
-/*   Updated: 2023/01/20 23:00:17 by dhussain         ###   ########.fr       */
+/*   Updated: 2023/01/23 17:35:10 by dhussain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ typedef struct map_check {
 	int	p_count;
 	int	e_count;
 	int	c_count;
+	int	player_x;
+	int	player_y;
 	int	x_max;
 	int	y_max;
 } t_mapcheck;
@@ -36,12 +38,12 @@ typedef struct map_path_check {
 } t_pathcheck;
 
 typedef struct s_images {
-	void		*player;
-	void		*exit;
-	void		*coin;
-	void		*walls;
-	void		*floor;
-	void		*chest;
+	mlx_texture_t		*t_player;
+	mlx_texture_t		*t_exit;
+	mlx_texture_t		*t_coin;
+	mlx_texture_t		*t_walls;
+	mlx_texture_t		*t_floor;
+	mlx_texture_t		*t_chest;
 }	t_image;
 
 typedef struct s_map {
@@ -52,8 +54,15 @@ typedef struct s_map {
 	int				window_y;
 	int				window_center_x;
 	int				window_center_y;
+	int				map_player_x;
+	int				map_player_y;
+	mlx_image_t			*player;
+	mlx_image_t			*exit;
+	mlx_image_t			*coin;
+	mlx_image_t			*walls;
+	mlx_image_t			*floor;
+	mlx_image_t			*chest;
 	mlx_key_data_t	keydata;
-	t_pathcheck		*phck;
 	mlx_image_t		*mlx_image;
 	mlx_t			*mlx;
 	t_image			*image;
@@ -86,7 +95,7 @@ int		map_check_valid_path(t_pathcheck *phck, char **map_copy, int x, int y);
 void	images(t_map *map, t_mapcheck *mpck);
 void	open_images(t_image *image);
 void	texture_image(t_image *image, t_map *map);
-void	image_window(t_image *image, char **map_arr, t_map *map, t_mapcheck *mpck);
-void	place_floors_walls(t_image *image, char **map_arr, t_map *map, t_mapcheck *mpck);
+void	image_window(char **map_arr, t_map *map, t_mapcheck *mpck);
+void	place_floors_walls(char **map_arr, t_map *map, t_mapcheck *mpck);
 
 #endif

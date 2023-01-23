@@ -6,7 +6,7 @@
 /*   By: dhussain <dhussain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 16:39:06 by dhussain          #+#    #+#             */
-/*   Updated: 2023/01/20 19:08:39 by dhussain         ###   ########.fr       */
+/*   Updated: 2023/01/23 17:33:27 by dhussain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,23 @@
 
 void	texture_image(t_image *image, t_map *map)
 {
-	image->coin = mlx_texture_to_image(map->mlx, image->coin);
-	if (!image->coin)
+	map->coin = mlx_texture_to_image(map->mlx, image->t_coin);
+	if (!map->coin)
 		ft_exit("texture coin!");
-	image->player = mlx_texture_to_image(map->mlx, image->player);
-	if (!image->player)
+	map->player = mlx_texture_to_image(map->mlx, image->t_player);
+	if (!map->player)
 		ft_exit("texture player!");
-	image->exit = mlx_texture_to_image(map->mlx, image->exit);
-	if (!image->exit)
+	map->exit = mlx_texture_to_image(map->mlx, image->t_exit);
+	if (!map->exit)
 		ft_exit("texture exit!");
-	image->floor = mlx_texture_to_image(map->mlx, image->floor);
-	if (!image->floor)
+	map->floor = mlx_texture_to_image(map->mlx, image->t_floor);
+	if (!map->floor)
 		ft_exit("texture floor!");
-	image->walls = mlx_texture_to_image(map->mlx, image->walls);
-	if (!image->walls)
+	map->walls = mlx_texture_to_image(map->mlx, image->t_walls);
+	if (!map->walls)
 		ft_exit("texture walls!");
-	image->chest = mlx_texture_to_image(map->mlx, image->chest);
-	if (!image->chest)
+	map->chest = mlx_texture_to_image(map->mlx, image->t_chest);
+	if (!map->chest)
 		ft_exit("texture chest!");
 	return ;
 }

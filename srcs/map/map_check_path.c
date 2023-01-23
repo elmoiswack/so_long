@@ -6,7 +6,7 @@
 /*   By: dhussain <dhussain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 13:49:48 by dhussain          #+#    #+#             */
-/*   Updated: 2023/01/19 09:47:14 by dhussain         ###   ########.fr       */
+/*   Updated: 2023/01/23 16:14:47 by dhussain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ int	map_check_path(t_mapcheck *mpck, char **map_arr, int x, int y)
 	phck->destination_y = y;
 	start_x = phck->p_x;
 	start_y = phck->p_y;
+	mpck->player_x = phck->p_x;
+	mpck->player_y = phck->p_y;
 	if (map_check_valid_path(phck, map_copy, start_x, start_y) == 1)
 	{
 		ft_free_2d_array(map_copy, mpck->y_max);
