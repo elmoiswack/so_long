@@ -6,13 +6,13 @@
 /*   By: dhussain <dhussain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 15:44:08 by dhussain          #+#    #+#             */
-/*   Updated: 2023/01/23 17:35:28 by dhussain         ###   ########.fr       */
+/*   Updated: 2023/01/27 16:28:40 by dhussain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
 
-void	images(t_map *map, t_mapcheck *mpck)
+void	images(t_map *map)
 {
 	t_image		*image;
 
@@ -27,6 +27,6 @@ void	images(t_map *map, t_mapcheck *mpck)
 	map->player = mlx_new_image(map->mlx, 64, 64);
 	open_images(image);
 	texture_image(image, map);
-	image_window(map->map, map, mpck);
+	image_window(map->map, map);
 	return ;
 }

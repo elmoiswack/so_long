@@ -6,12 +6,21 @@
 /*   By: dhussain <dhussain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 13:00:14 by dhussain          #+#    #+#             */
-/*   Updated: 2023/01/23 16:15:51 by dhussain         ###   ########.fr       */
+/*   Updated: 2023/01/27 16:27:37 by dhussain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
 
+void	copy_variables(t_map *map, t_mapcheck *mpck)
+{
+	map->map_player_x = mpck->player_x;
+	map->map_player_y = mpck->player_y;
+	map->c_count = mpck->c_count;
+	map->y_max = mpck->y_max;
+	map->x_max = mpck->x_max;
+	return ;
+}
 char	**map_check_file(t_map *map, t_mapcheck *mpck, char **argv)
 {
 	int			fd;
@@ -36,8 +45,7 @@ char	**map_check_file(t_map *map, t_mapcheck *mpck, char **argv)
 	map_check_middle(mpck, map->map);
 	map_check_end(mpck, map->map);
 	map_checker_finalcheck(mpck);
-	map->map_player_x = mpck->player_x;
-	map->map_player_y = mpck->player_y;
+	copy_variables(map, mpck);
 	return (map->map);
 }
 
