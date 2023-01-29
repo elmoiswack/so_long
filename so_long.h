@@ -6,7 +6,7 @@
 /*   By: dhussain <dhussain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 15:33:53 by dhussain          #+#    #+#             */
-/*   Updated: 2023/01/27 16:29:28 by dhussain         ###   ########.fr       */
+/*   Updated: 2023/01/29 17:47:49 by dhussain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ typedef struct s_map {
 	char			**map;
 	int				moves;
 	int				c_count;
+	size_t			c_index;
 	int				x;
 	int				y;
 	int				x_max;

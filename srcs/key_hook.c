@@ -6,7 +6,7 @@
 /*   By: dhussain <dhussain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 11:59:40 by dhussain          #+#    #+#             */
-/*   Updated: 2023/01/27 17:11:29 by dhussain         ###   ########.fr       */
+/*   Updated: 2023/01/29 17:31:43 by dhussain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	checker_collectibles_map(t_map *map)
 	{
 		map->c_count--;
 		map->map[map->map_player_y][map->map_player_x] = '0';
-		//instances for every coin and then i can see where the location is and boolean that bitch
+		//while (map->coin->instances[i] != map->coin->instances)
 	}
 	if (map->map[map->map_player_y][map->map_player_x] == 'E' && map->c_count == 0)
 	{

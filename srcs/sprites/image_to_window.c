@@ -6,15 +6,22 @@
 /*   By: dhussain <dhussain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 15:36:09 by dhussain          #+#    #+#             */
-/*   Updated: 2023/01/27 17:03:39 by dhussain         ###   ########.fr       */
+/*   Updated: 2023/01/29 17:47:57 by dhussain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
 
+void	coin_x_y_instances(t_map *map, int x, int y)
+{
+
+	map->c_index = mlx_image_to_window(map->mlx, map->coin, x * 32, y * 32);
+}
+
 void	image_window(char **map_arr, t_map *map)
 {
 	map->y = 0;
+	map->c_index = 0;
 	place_floors_walls(map_arr, map);
 	while (map->y <= map->y_max)
 	{
@@ -24,7 +31,7 @@ void	image_window(char **map_arr, t_map *map)
 			if (map_arr[map->y][map->x] == 'E')
 				mlx_image_to_window(map->mlx, map->exit, map->x * 32, map->y * 32);
 			if (map_arr[map->y][map->x] == 'C')
-				mlx_image_to_window(map->mlx, map->coin, map->x * 32, map->y * 32);
+				coin_x_y_instances(map, map->x, map->y);
 			else if ((map->y != 0) && (map->y != map->y_max) && (map->x != 0) && (map->x != (map->x_max - 1))&& (map_arr[map->y][map->x] == '1'))
 				mlx_image_to_window(map->mlx, map->chest, map->x * 32, map->y * 32);
 			map->x++;
