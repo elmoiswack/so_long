@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ending.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dhussain <dhussain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/23 12:59:57 by dhussain          #+#    #+#             */
-/*   Updated: 2023/01/30 05:18:56 by dhussain         ###   ########.fr       */
+/*   Created: 2023/01/30 05:03:33 by dhussain          #+#    #+#             */
+/*   Updated: 2023/01/30 05:13:57 by dhussain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-int32_t	main(int argc, char *argv[])
+void	ending(t_map *map)
 {
-	t_map		*map;
-	t_mapcheck	*mpck;
-
-	mpck = ft_calloc(1, sizeof(t_mapcheck));
-	if (!mpck)
-		ft_exit("malloc\nmalloc has failed map_check!");
-	map = ft_calloc(1, sizeof(t_map));
-	if (!map)
-		ft_exit("malloc\nmalloc has failed in main!");
-	arg_checks(argc, argv);
-	map->map = map_check_file(map, mpck, argv);
-	free(mpck);
-	window_creation(map);
+	mlx_delete_image(map->mlx, map->player);
+	mlx_delete_image(map->mlx, map->chest);
+	mlx_delete_image(map->mlx, map->exit);
+	mlx_delete_image(map->mlx, map->floor);
+	mlx_delete_image(map->mlx, map->coin);
+	mlx_delete_image(map->mlx, map->walls);
+	ft_free_2d_array(map->map, map->y_max);
+	free(map->map_t_player);
+	mlx_terminate(map->mlx);
+	exit(EXIT_SUCCESS);
 }

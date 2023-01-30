@@ -6,7 +6,7 @@
 /*   By: dhussain <dhussain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 15:33:53 by dhussain          #+#    #+#             */
-/*   Updated: 2023/01/30 00:50:39 by dhussain         ###   ########.fr       */
+/*   Updated: 2023/01/30 05:50:21 by dhussain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,11 @@ typedef struct s_map {
 
 //1 time functions
 int		arg_checks(int argc, char *argv[]);
-void	window_creation(t_map *map, t_mapcheck *mpck);
+void	copy_variables(t_map *map, t_mapcheck *mpck);
+void	window_creation(t_map *map);
+int		get_window_size(t_map *map);
 void	button_key_hook(void *param);
+void	ending(t_map *map);
 
 //globally used functions
 void	ft_exit(char *str);
@@ -100,5 +103,13 @@ void	open_images(t_image *image);
 void	texture_image(t_image *image, t_map *map);
 void	image_window(char **map_arr, t_map *map);
 void	place_floors_walls(char **map_arr, t_map *map);
+void	player_recreation(t_map *map);
+
+//movement
+void	move_up(t_map *map);
+void	move_down(t_map *map);
+void	move_left(t_map *map);
+void	move_right(t_map *map);
+void	checker_points_map(t_map *map);
 
 #endif

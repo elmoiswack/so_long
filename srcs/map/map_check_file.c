@@ -6,7 +6,7 @@
 /*   By: dhussain <dhussain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 13:00:14 by dhussain          #+#    #+#             */
-/*   Updated: 2023/01/27 16:27:37 by dhussain         ###   ########.fr       */
+/*   Updated: 2023/01/30 05:21:10 by dhussain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ char	**map_check_file(t_map *map, t_mapcheck *mpck, char **argv)
 	char		*str;
 
 	fd = open(argv[1], O_RDONLY);
+	if (fd == -1)
+		ft_exit("map\nNon existing map given!");
 	str = ft_calloc(1, sizeof(char));
 	if (!str)
 		ft_exit("malloc\nallocation of str has failed in map_line!");

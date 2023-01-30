@@ -6,7 +6,7 @@
 /*   By: dhussain <dhussain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 11:59:40 by dhussain          #+#    #+#             */
-/*   Updated: 2023/01/30 00:53:08 by dhussain         ###   ########.fr       */
+/*   Updated: 2023/01/30 05:06:04 by dhussain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ void	player_recreation(t_map *map)
 	mlx_image_to_window(map->mlx, map->player, map->map_player_x * 32, map->map_player_y * 32);
 	return ;
 }
-void	checker_collectibles_map(t_map *map)
+
+void	checker_points_map(t_map *map)
 {
 	if (map->map[map->map_player_y][map->map_player_x] == 'C')
 	{
@@ -41,9 +42,7 @@ void	checker_collectibles_map(t_map *map)
 	}
 	if (map->map[map->map_player_y][map->map_player_x] == 'E' && map->c_count == 0)
 	{
-		ft_printf("CONGRATS YOU HAVE COMPLETED THE MAP!!\n");
-		mlx_terminate(map->mlx);
-		exit(EXIT_SUCCESS);
+		ending(map);
 	}
 	return ;
 }
@@ -60,35 +59,11 @@ void	button_key_hook(void *param)
 	else if (mlx_is_key_down(map->mlx, MLX_KEY_W) && mlx_is_key_down(map->mlx, MLX_KEY_S))
 		return ;
 	else if (mlx_is_key_down(map->mlx, MLX_KEY_D) && map->map[map->map_player_y][map->map_player_x + 1] != '1')
-	{
-		map->player->instances[0].x += 32;
-		map->map_player_x += 1;
-		map->moves += 1;
-		ft_printf("Amount of moves are: %i\n", map->moves);
-		checker_collectibles_map(map);
-	}
+		move_right(map);
 	else if (mlx_is_key_down(map->mlx, MLX_KEY_A) && map->map[map->map_player_y][map->map_player_x - 1] != '1')
-	{
-		map->player->instances[0].x -= 32;
-		map->map_player_x -= 1;
-		map->moves += 1;
-		ft_printf("Amount of moves are: %i\n", map->moves);
-		checker_collectibles_map(map);
-	}
+		move_left(map);
 	else if (mlx_is_key_down(map->mlx, MLX_KEY_S) && map->map[map->map_player_y + 1][map->map_player_x] != '1')
-	{
-		map->player->instances[0].y += 32;
-		map->map_player_y += 1;
-		map->moves += 1;
-		ft_printf("Amount of moves are: %i\n", map->moves);
-		checker_collectibles_map(map);
-	}	
+		move_down(map);
 	else if (mlx_is_key_down(map->mlx, MLX_KEY_W) && map->map[map->map_player_y - 1][map->map_player_x] != '1')
-	{
-		map->player->instances[0].y -= 32;
-		map->map_player_y -= 1;
-		map->moves += 1;
-		ft_printf("Amount of moves are: %i\n", map->moves);
-		checker_collectibles_map(map);
-	}
+		move_up(map);
 }
