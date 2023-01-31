@@ -12,38 +12,44 @@
 
 #include "../../so_long.h"
 
-void	texture_free(t_image *image)
-{
-	free(image->t_chest);
-	free(image->t_coin);
-	free(image->t_exit);
-	free(image->t_floor);
-	free(image->t_player);
-	free(image->t_walls);
-	free(image);
-	return ;
-}
-
 void	texture_image(t_image *image, t_map *map)
 {
 	map->coin = mlx_texture_to_image(map->mlx, image->t_coin);
 	if (!map->coin)
-		ft_exit("texture coin!");
+	{
+		texture_free(image);
+		ft_exit("texture_image\ntexture to image failed for coin!", map);
+	}
 	map->player = mlx_texture_to_image(map->mlx, image->t_player);
 	if (!map->player)
-		ft_exit("texture player!");
+	{
+		texture_free(image);
+		ft_exit("texture_image\ntexture to image failed for player!", map);
+	}
 	map->exit = mlx_texture_to_image(map->mlx, image->t_exit);
 	if (!map->exit)
-		ft_exit("texture exit!");
+	{
+		texture_free(image);
+		ft_exit("texture_image\ntexture to image failed for exit!", map);
+	}
 	map->floor = mlx_texture_to_image(map->mlx, image->t_floor);
 	if (!map->floor)
-		ft_exit("texture floor!");
+	{
+		texture_free(image);
+		ft_exit("texture_image\ntexture to image failed for	floor!", map);
+	}
 	map->walls = mlx_texture_to_image(map->mlx, image->t_walls);
 	if (!map->walls)
-		ft_exit("texture walls!");
+	{
+		texture_free(image);
+		ft_exit("texture_image\ntexture to image failed for walls!", map);
+	}	
 	map->chest = mlx_texture_to_image(map->mlx, image->t_chest);
 	if (!map->chest)
-		ft_exit("texture chest!");
+	{
+		texture_free(image);
+		ft_exit("texture_image\ntexture to image failed for chest!", map);
+	}	
 	texture_free(image);
 	return ;
 }

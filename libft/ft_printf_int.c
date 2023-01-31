@@ -28,7 +28,7 @@ int	ft_printf_int(va_list ptr, int len)
 		return (len + 1);
 	str = ft_mallocaaa(j);
 	if (!str)
-		return ((char) NULL);
+		return (0);
 	len = ftwrite(j, str, len);
 	free(str);
 	return (len);

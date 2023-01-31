@@ -58,6 +58,7 @@ typedef struct s_map {
 	int				window_y;
 	int				map_player_x;
 	int				map_player_y;
+	int				direction;
 	mlx_texture_t	*map_t_player;
 	mlx_image_t		*player;
 	mlx_image_t		*exit;
@@ -79,9 +80,13 @@ int		get_window_size(t_map *map);
 void	button_key_hook(void *param);
 void	ending(t_map *map);
 
-//globally used functions
-void	ft_exit(char *str);
-void	ft_free_2d_array(char **array, int y);
+//free and exit functions
+void	ft_exit(char *str, t_map *map);
+void	ft_free_2d_array(char **array);
+void	free_structmap(t_map *map);
+void	texture_free(t_image *image);
+void	free_checkers_failed(t_map *map, t_mapcheck *mpck, char *str);
+void	free_mapcopy(char **map_copy, int y);
 
 //valid map
 char	**map_check_file(t_map *map, t_mapcheck *mpck, char **argv);
@@ -99,11 +104,12 @@ int		map_check_valid_path(t_pathcheck *phck, char **map_copy, int x, int y);
 
 //images
 void	images(t_map *map);
-void	open_images(t_image *image);
+int		open_images(t_image *image);
 void	texture_image(t_image *image, t_map *map);
 void	image_window(char **map_arr, t_map *map);
 void	place_floors_walls(char **map_arr, t_map *map);
-void	player_recreation(t_map *map);
+void	player_recreation_right(t_map *map);
+void	player_recreation_left(t_map *map);
 
 //movement
 void	move_up(t_map *map);

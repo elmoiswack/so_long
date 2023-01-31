@@ -4,7 +4,8 @@ HEADER 	:= so_long.h
 
 MLX		:= ./mlx42
 
-MLXLIB 	:= $(MLX)/libmlx42.a -lglfw3 -framework Cocoa -framework OpenGL -fsanitize=address -framework IOKit
+MLXLIB 	:= $(MLX)/libmlx42.a -I include -lglfw -L "/Users/dantehussain/.brew/opt/glfw/lib/" -fsanitize=address
+#-lglfw3 -framework Cocoa -framework OpenGL -fsanitize=address -framework IOKit
 
 LIBFT 		:= ./libft
 
@@ -19,7 +20,7 @@ SRC	:=	./srcs/main.c \
 		./srcs/map/map_check_path.c \
 		./srcs/map/map_check_path_parsing.c \
 		./srcs/ft_exit.c \
-		./srcs/ft_free.c \
+		./srcs/free_functions.c \
 		./srcs/window.c \
 		./srcs/sprites/images.c \
 		./srcs/sprites/image_to_window.c \

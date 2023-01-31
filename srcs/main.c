@@ -19,11 +19,19 @@ int32_t	main(int argc, char *argv[])
 
 	mpck = ft_calloc(1, sizeof(t_mapcheck));
 	if (!mpck)
-		ft_exit("malloc\nmalloc has failed map_check!");
+		exit(EXIT_FAILURE);
 	map = ft_calloc(1, sizeof(t_map));
 	if (!map)
-		ft_exit("malloc\nmalloc has failed in main!");
-	arg_checks(argc, argv);
+	{
+		free(mpck);
+		exit(EXIT_FAILURE);
+	}
+	if (arg_checks(argc, argv) == -1)
+	{
+		free(map);
+		free(mpck);
+		exit(EXIT_FAILURE);
+	}
 	map->map = map_check_file(map, mpck, argv);
 	free(mpck);
 	window_creation(map);

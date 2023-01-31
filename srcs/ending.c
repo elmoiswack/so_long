@@ -14,14 +14,8 @@
 
 void	ending(t_map *map)
 {
-	mlx_delete_image(map->mlx, map->player);
-	mlx_delete_image(map->mlx, map->chest);
-	mlx_delete_image(map->mlx, map->exit);
-	mlx_delete_image(map->mlx, map->floor);
-	mlx_delete_image(map->mlx, map->coin);
-	mlx_delete_image(map->mlx, map->walls);
-	ft_free_2d_array(map->map, map->y_max);
-	free(map->map_t_player);
+	free_structmap(map);
 	mlx_terminate(map->mlx);
+	ft_printf("CONGRATS YOU COMPLETED THE MAP!!!!!\n");
 	exit(EXIT_SUCCESS);
 }

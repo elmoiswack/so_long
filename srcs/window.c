@@ -49,7 +49,7 @@ void	window_creation(t_map *map)
 		map->window_y = map->y_max * times;
 	}	
 	if (!(map->mlx = mlx_init(map->window_x, map->window_y, "so_long", 0)))
-		ft_exit("making window\nmlx_init failed in window_creation!");
+		ft_exit("window_creation\nmlx_init failed in window_creation!", map);
 	images(map);
 	mlx_loop_hook(map->mlx, &button_key_hook, map);
 	mlx_loop(map->mlx);

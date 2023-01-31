@@ -29,24 +29,29 @@ char	**map_check_file(t_map *map, t_mapcheck *mpck, char **argv)
 
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1)
-		ft_exit("map\nNon existing map given!");
+		free_checkers_failed(map, mpck, "map\nNon existing map given!");
 	str = ft_calloc(1, sizeof(char));
 	if (!str)
-		ft_exit("malloc\nallocation of str has failed in map_line!");
+		free_checkers_failed(map, mpck, "malloc\nallocation of str has failed in map_line!");
 	map_str = map_line(fd, str);
+	if (!map_str)
+		free_checkers_failed(map, mpck, "map_line\nEither GNL or strjoin failed!");
 	close (fd);
 	map->map = ft_split(map_str, '\n');
 	if (!map->map)
 	{
-		free(map);
 		free(map_str);
-		ft_exit("malloc\nallocation of map->map has failed in map_check_file!");
+		free_checkers_failed(map, mpck, "malloc\nallocation of map->map has failed in map_check_file!");
 	}
 	free(map_str);
-	map_check_begin(mpck, map->map);
-	map_check_middle(mpck, map->map);
-	map_check_end(mpck, map->map);
-	map_checker_finalcheck(mpck);
+	if (map_check_begin(mpck, map->map) == -1)
+		free_checkers_failed(map, mpck, "\0");
+	if (map_check_middle(mpck, map->map) == -1)
+		free_checkers_failed(map, mpck, "\0");
+	if (map_check_end(mpck, map->map) == -1)
+		free_checkers_failed(map, mpck, "\0");
+	if (map_checker_finalcheck(mpck) == -1)
+		free_checkers_failed(map, mpck, "\0");
 	copy_variables(map, mpck);
 	return (map->map);
 }
@@ -57,7 +62,7 @@ char	*map_line(int fd, char *str)
 
 	str_gnl = get_next_line(fd);
 	if (!str_gnl)
-		ft_exit("get next line\nget next line has failed in map_line!");
+		return (NULL);
 	while (str_gnl)
 	{
 		str = ft_strjoin(str, str_gnl);
@@ -65,14 +70,14 @@ char	*map_line(int fd, char *str)
 		{
 			free(str);
 			free(str_gnl);
-			ft_exit("strjoin\nstrjoin has failed in map_line!");
+			return (NULL);
 		}
 		str_gnl = get_next_line(fd);
 		if (str_gnl && str_gnl[0] == '\n')
-			ft_exit("map\nmap is invalid in map_line!");
+			return (NULL);
 	}
 	if (str[0] == '\n' || str[0] == '\0')
-		ft_exit("map\nmap is invalid in map_line!");
+		return (NULL);
 	free(str_gnl);
 	return (str);
 }

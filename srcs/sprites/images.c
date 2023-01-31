@@ -18,14 +18,18 @@ void	images(t_map *map)
 
 	image = ft_calloc(1, sizeof(t_image));
 	if (!image)
-		ft_exit("malloc\nmalloc has failed in main!");
+		ft_exit("malloc\nmalloc has failed in main!", map);
 	map->chest = mlx_new_image(map->mlx, 64, 64);
 	map->coin = mlx_new_image(map->mlx, 64, 64);
 	map->floor = mlx_new_image(map->mlx, 64, 64);
 	map->exit = mlx_new_image(map->mlx, 64, 64);
 	map->walls = mlx_new_image(map->mlx, 64, 64);
 	map->player = mlx_new_image(map->mlx, 64, 64);
-	open_images(image);
+	if (open_images(image) == -1)
+	{
+		free(image);
+		ft_exit("open images!\n", map);
+	}
 	texture_image(image, map);
 	image_window(map->map, map);
 	return ;

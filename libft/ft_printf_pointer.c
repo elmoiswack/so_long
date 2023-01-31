@@ -34,7 +34,7 @@ int	ft_printf_pointer(va_list ptr, int len)
 	j = (unsigned long long)tempptr;
 	tempstr = ft_mallocaaa(j);
 	if (!tempstr)
-		return ((char) NULL);
+		return (0);
 	str = "0123456789abcdef";
 	return (convert(j, tempstr, len, str));
 }

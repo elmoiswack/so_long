@@ -12,8 +12,9 @@
 
 #include "../so_long.h"
 
-void	ft_exit(char *str)
+void	ft_exit(char *str, t_map *map)
 {
 	ft_printf("Error in %s\n", str);
+	free_structmap(map);
 	exit(EXIT_FAILURE);
 }
