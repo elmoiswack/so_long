@@ -6,7 +6,7 @@
 /*   By: dhussain <dhussain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 13:49:48 by dhussain          #+#    #+#             */
-/*   Updated: 2023/02/01 10:53:42 by dhussain         ###   ########.fr       */
+/*   Updated: 2023/02/01 16:29:48 by dhussain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ int	map_check_path(t_mapcheck *mpck, char **map_arr, int x, int y)
 	map_copy = map_copy_function(map_arr, mpck);
 	if (!map_copy)
 	{
-		free(mpck);
 		free(phck);
 		ft_free_2d_array(map_arr);
 		return (-1);
@@ -85,7 +84,7 @@ void	free_mapcopy(char **map_copy, int y)
 {
 	if (y > 1)
 	{
-		while (y > 1)
+		while (y >= 0)
 		{
 			free(map_copy[y]);
 			y--;
@@ -101,24 +100,27 @@ char	**map_copy_function(char **map_arr, t_mapcheck *mpck)
 	int		y;
 	char	**map_copy;
 
-	x = 0;
 	y = 0;
-	map_copy = malloc(mpck->y_max * sizeof(char *));
+	map_copy = malloc((mpck->y_max + 2) * sizeof(char *));
 	if (!map_copy)
 		return (NULL);
 	while (y <= mpck->y_max)
 	{
 		map_copy[y] = malloc(ft_strlen(map_arr[y]) + 1);
 		if (!map_copy[y])
+		{
+			free_mapcopy(map_copy, y);
 			return (NULL);
+		}
+		x = 0;
 		while (map_arr[y][x])
 		{
 			map_copy[y][x] = map_arr[y][x];
 			x++;
 		}
 		map_copy[y][x] = '\0';
-		x = 0;
 		y += 1;
 	}
+	map_copy[y] = NULL;
 	return (map_copy);
 }

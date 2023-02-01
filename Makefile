@@ -4,8 +4,8 @@ HEADER 	:= so_long.h
 
 MLX		:= ./mlx42
 
-MLXLIB 	:= $(MLX)/libmlx42.a -lglfw3 -framework Cocoa -framework OpenGL -fsanitize=address -framework IOKit
-#-I include -lglfw -L "/Users/dantehussain/.brew/opt/glfw/lib/" -fsanitize=address
+MLXLIB 	:= $(MLX)/libmlx42.a -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit
+#-I include -lglfw -L "/Users/dantehussain/.brew/opt/glfw/lib/" 
 
 LIBFT 		:= ./libft
 
@@ -16,6 +16,7 @@ HEADERS	:=	-I $(LIBFT) -I includes -I $(MLX)/includes
 SRC	:=	./srcs/main.c \
 		./srcs/argument_checks.c \
 		./srcs/map/map_check_file.c \
+		./srcs/map/map_check_file_helpers.c \
 		./srcs/map/map_check_file_map.c \
 		./srcs/map/map_check_path.c \
 		./srcs/map/map_check_path_parsing.c \
@@ -35,7 +36,7 @@ OBJ := $(SRC:.c=.o)
 
 CC	:=	gcc
 
-CFLAGS	:=	-g -Wall -Wextra -Werror
+CFLAGS	:= -Wall -Wextra -Werror
 
 all: libs $(NAME)
 

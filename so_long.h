@@ -6,7 +6,7 @@
 /*   By: dhussain <dhussain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 15:33:53 by dhussain          #+#    #+#             */
-/*   Updated: 2023/02/01 11:16:38 by dhussain         ###   ########.fr       */
+/*   Updated: 2023/02/01 16:36:31 by dhussain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ void	window_creation(t_map *map);
 int		get_window_size(t_map *map);
 void	button_key_hook(void *param);
 void	ending(t_map *map);
+void	ending_failure(t_map *map);
 
 //free and exit functions
 void	ft_exit(char *str, t_map *map);

@@ -6,7 +6,7 @@
 /*   By: dhussain <dhussain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 14:53:03 by dhussain          #+#    #+#             */
-/*   Updated: 2022/10/19 15:35:53 by dhussain         ###   ########.fr       */
+/*   Updated: 2023/02/01 14:32:03 by dhussain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,12 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 	i = 0;
 	if ((size_t)start > ft_strlen(s))
-		return (ft_strdup(""));
+	{
+		ptr = ft_strdup("");
+		if (!ptr)
+			return (NULL);
+		return (ptr);
+	}
 	while (s[start + i] != '\0' && i < len)
 		i++;
 	ptr = malloc((i + 1) * sizeof(char));

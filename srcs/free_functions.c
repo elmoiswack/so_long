@@ -6,7 +6,7 @@
 /*   By: dhussain <dhussain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 15:33:47 by dhussain          #+#    #+#             */
-/*   Updated: 2023/02/01 10:22:15 by dhussain         ###   ########.fr       */
+/*   Updated: 2023/02/01 14:38:16 by dhussain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	free_structmap(t_map *map)
 		mlx_delete_image(map->mlx, map->walls);
 	if (map->map != NULL)
 		ft_free_2d_array(map->map);
+	free(map);
 	return ;
 }
 
@@ -37,17 +38,11 @@ void	ft_free_2d_array(char **array)
 
 	y = 0;
 	while (array[y] != NULL)
-		y++;
-	y--;
-	if (y > 1)
 	{
-		while (y > 1)
-		{
-			free(array[y]);
-			y--;
-		}
+		free(array[y]);
+		y++;
 	}
-	free (array);
+	free(array);
 	return ;
 }
 

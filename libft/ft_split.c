@@ -6,7 +6,7 @@
 /*   By: dhussain <dhussain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 14:15:43 by dhussain          #+#    #+#             */
-/*   Updated: 2022/10/19 14:03:06 by dhussain         ###   ########.fr       */
+/*   Updated: 2023/02/01 15:41:11 by dhussain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,5 +83,5 @@ char	**ree(char **arr, int j)
 		j--;
 	}
 	free(arr);
-	return (0);
+	return (NULL);
 }

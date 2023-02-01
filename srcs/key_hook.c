@@ -6,7 +6,7 @@
 /*   By: dhussain <dhussain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 11:59:40 by dhussain          #+#    #+#             */
-/*   Updated: 2023/02/01 11:13:54 by dhussain         ###   ########.fr       */
+/*   Updated: 2023/02/01 16:35:32 by dhussain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	checker_points_map(t_map *map)
 int	button_checks(t_map *map)
 {
 	if (mlx_is_key_down(map->mlx, MLX_KEY_ESCAPE))
-		mlx_close_window(map->mlx);
+		ending_failure(map);
 	else if (mlx_is_key_down(map->mlx, MLX_KEY_D)
 		&& mlx_is_key_down(map->mlx, MLX_KEY_A))
 		return (-1);
