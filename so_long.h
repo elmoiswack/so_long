@@ -6,7 +6,7 @@
 /*   By: dhussain <dhussain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 15:33:53 by dhussain          #+#    #+#             */
-/*   Updated: 2023/01/30 05:50:21 by dhussain         ###   ########.fr       */
+/*   Updated: 2023/02/01 11:16:38 by dhussain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,14 @@ typedef struct map_check {
 	int	player_y;
 	int	x_max;
 	int	y_max;
-} t_mapcheck;
+}	t_mapcheck;
 
 typedef struct map_path_check {
-	int destination_x;
-	int destination_y;
+	int	destination_x;
+	int	destination_y;
 	int	p_x;
 	int	p_y;
-} t_pathcheck;
+}	t_pathcheck;
 
 typedef struct s_images {
 	mlx_texture_t		*t_player;
@@ -82,6 +82,7 @@ void	ending(t_map *map);
 
 //free and exit functions
 void	ft_exit(char *str, t_map *map);
+int		exit_printf(char *str);
 void	ft_free_2d_array(char **array);
 void	free_structmap(t_map *map);
 void	texture_free(t_image *image);
@@ -91,6 +92,9 @@ void	free_mapcopy(char **map_copy, int y);
 //valid map
 char	**map_check_file(t_map *map, t_mapcheck *mpck, char **argv);
 char	*map_line(int fd, char *str);
+void	map_check_map(t_map *map, t_mapcheck *mpck);
+void	copy_variables(t_map *map, t_mapcheck *mpck);
+char	**map_check_final(t_map *map, t_mapcheck *mpck);
 int		map_check_checker(t_mapcheck *mpck, char **map_arr, int x, int y);
 int		map_check_begin(t_mapcheck *mpck, char **map_arr);
 int		map_check_middle(t_mapcheck *mpck, char **map_arr);
@@ -99,13 +103,15 @@ int		map_checker_finalcheck(t_mapcheck *mpck);
 //valid path in map
 int		map_check_path(t_mapcheck *mpck, char **map_arr, int x, int y);
 int		map_check_p(t_mapcheck *mpck, char **map_arr, t_pathcheck *phck);
-char 	**map_copy_function(char **map_arr, t_mapcheck *mpck);
+char	**map_copy_function(char **map_arr, t_mapcheck *mpck);
 int		map_check_valid_path(t_pathcheck *phck, char **map_copy, int x, int y);
+int		path_checker(t_pathcheck *phck, t_mapcheck *mpck, char **map_copy);
 
 //images
 void	images(t_map *map);
 int		open_images(t_image *image);
 void	texture_image(t_image *image, t_map *map);
+void	texture_walls_chests_floor(t_image *image, t_map *map);
 void	image_window(char **map_arr, t_map *map);
 void	place_floors_walls(char **map_arr, t_map *map);
 void	player_recreation_right(t_map *map);

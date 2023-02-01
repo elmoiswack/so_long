@@ -6,38 +6,17 @@
 /*   By: dhussain <dhussain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 13:49:48 by dhussain          #+#    #+#             */
-/*   Updated: 2023/01/30 05:16:53 by dhussain         ###   ########.fr       */
+/*   Updated: 2023/02/01 10:53:42 by dhussain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
 
-int	map_check_path(t_mapcheck *mpck, char **map_arr, int x, int y)
+int	path_checker(t_pathcheck *phck, t_mapcheck *mpck, char **map_copy)
 {
-	t_pathcheck	*phck;
-	char		**map_copy;
 	int			start_x;
 	int			start_y;
 
-	phck = ft_calloc(1, sizeof(t_pathcheck));
-	if (!phck)
-		return (-1);
-	if (map_check_p(mpck, map_arr, phck) == -1)
-	{
-		free(mpck);
-		ft_free_2d_array(map_arr);
-		return(-1);
-	}		
-	map_copy = map_copy_function(map_arr, mpck);
-	if (!map_copy)
-	{
-		free(mpck);
-		free(phck);
-		ft_free_2d_array(map_arr);
-		return (-1);
-	}
-	phck->destination_x = x;
-	phck->destination_y = y;
 	start_x = phck->p_x;
 	start_y = phck->p_y;
 	mpck->player_x = phck->p_x;
@@ -49,6 +28,36 @@ int	map_check_path(t_mapcheck *mpck, char **map_arr, int x, int y)
 		return (1);
 	}
 	free_mapcopy(map_copy, mpck->y_max);
+	free(phck);
+	return (-1);
+}
+
+int	map_check_path(t_mapcheck *mpck, char **map_arr, int x, int y)
+{
+	t_pathcheck	*phck;
+	char		**map_copy;
+
+	phck = ft_calloc(1, sizeof(t_pathcheck));
+	if (!phck)
+		return (-1);
+	if (map_check_p(mpck, map_arr, phck) == -1)
+	{
+		free(mpck);
+		ft_free_2d_array(map_arr);
+		return (-1);
+	}		
+	map_copy = map_copy_function(map_arr, mpck);
+	if (!map_copy)
+	{
+		free(mpck);
+		free(phck);
+		ft_free_2d_array(map_arr);
+		return (-1);
+	}
+	phck->destination_x = x;
+	phck->destination_y = y;
+	if (path_checker(phck, mpck, map_copy) == 1)
+		return (1);
 	return (-1);
 }
 
@@ -85,6 +94,7 @@ void	free_mapcopy(char **map_copy, int y)
 	free(map_copy);
 	return ;
 }
+
 char	**map_copy_function(char **map_arr, t_mapcheck *mpck)
 {
 	int		x;
@@ -100,10 +110,7 @@ char	**map_copy_function(char **map_arr, t_mapcheck *mpck)
 	{
 		map_copy[y] = malloc(ft_strlen(map_arr[y]) + 1);
 		if (!map_copy[y])
-		{
-			ft_free_2d_array(map_copy);
 			return (NULL);
-		}
 		while (map_arr[y][x])
 		{
 			map_copy[y][x] = map_arr[y][x];

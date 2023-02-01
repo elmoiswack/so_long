@@ -4,8 +4,8 @@ HEADER 	:= so_long.h
 
 MLX		:= ./mlx42
 
-MLXLIB 	:= $(MLX)/libmlx42.a -I include -lglfw -L "/Users/dantehussain/.brew/opt/glfw/lib/" -fsanitize=address
-#-lglfw3 -framework Cocoa -framework OpenGL -fsanitize=address -framework IOKit
+MLXLIB 	:= $(MLX)/libmlx42.a -lglfw3 -framework Cocoa -framework OpenGL -fsanitize=address -framework IOKit
+#-I include -lglfw -L "/Users/dantehussain/.brew/opt/glfw/lib/" -fsanitize=address
 
 LIBFT 		:= ./libft
 

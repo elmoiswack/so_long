@@ -6,7 +6,7 @@
 /*   By: dhussain <dhussain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 13:00:14 by dhussain          #+#    #+#             */
-/*   Updated: 2023/01/30 05:21:10 by dhussain         ###   ########.fr       */
+/*   Updated: 2023/02/01 11:06:10 by dhussain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,27 @@ void	copy_variables(t_map *map, t_mapcheck *mpck)
 	map->x_max = mpck->x_max;
 	return ;
 }
+
+void	map_check_map(t_map *map, t_mapcheck *mpck)
+{
+	if (map_check_begin(mpck, map->map) == -1)
+		free_checkers_failed(map, mpck, "\0");
+	if (map_check_middle(mpck, map->map) == -1)
+		free_checkers_failed(map, mpck, "\0");
+	if (map_check_end(mpck, map->map) == -1)
+		free_checkers_failed(map, mpck, "\0");
+	if (map_checker_finalcheck(mpck) == -1)
+		free_checkers_failed(map, mpck, "\0");
+	return ;
+}
+
+char	**map_check_final(t_map *map, t_mapcheck *mpck)
+{
+	map_check_map(map, mpck);
+	copy_variables(map, mpck);
+	return (map->map);
+}
+
 char	**map_check_file(t_map *map, t_mapcheck *mpck, char **argv)
 {
 	int			fd;
@@ -32,28 +53,22 @@ char	**map_check_file(t_map *map, t_mapcheck *mpck, char **argv)
 		free_checkers_failed(map, mpck, "map\nNon existing map given!");
 	str = ft_calloc(1, sizeof(char));
 	if (!str)
-		free_checkers_failed(map, mpck, "malloc\nallocation of str has failed in map_line!");
+		free_checkers_failed(map, mpck,
+			"malloc\nallocation of str has failed in map_line!");
 	map_str = map_line(fd, str);
 	if (!map_str)
-		free_checkers_failed(map, mpck, "map_line\nEither GNL or strjoin failed!");
+		free_checkers_failed(map, mpck,
+			"map_line\nEither GNL or strjoin failed!");
 	close (fd);
 	map->map = ft_split(map_str, '\n');
 	if (!map->map)
 	{
 		free(map_str);
-		free_checkers_failed(map, mpck, "malloc\nallocation of map->map has failed in map_check_file!");
+		free_checkers_failed(map, mpck,
+			"malloc\nallocation of map->map has failed in map_check_file!");
 	}
 	free(map_str);
-	if (map_check_begin(mpck, map->map) == -1)
-		free_checkers_failed(map, mpck, "\0");
-	if (map_check_middle(mpck, map->map) == -1)
-		free_checkers_failed(map, mpck, "\0");
-	if (map_check_end(mpck, map->map) == -1)
-		free_checkers_failed(map, mpck, "\0");
-	if (map_checker_finalcheck(mpck) == -1)
-		free_checkers_failed(map, mpck, "\0");
-	copy_variables(map, mpck);
-	return (map->map);
+	return (map_check_final(map, mpck));
 }
 
 char	*map_line(int fd, char *str)

@@ -6,7 +6,7 @@
 /*   By: dhussain <dhussain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 12:06:28 by dhussain          #+#    #+#             */
-/*   Updated: 2023/01/30 05:48:47 by dhussain         ###   ########.fr       */
+/*   Updated: 2023/02/01 10:45:38 by dhussain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ void	window_creation(t_map *map)
 		times = get_window_size(map);
 		map->window_y = map->y_max * times;
 	}	
-	if (!(map->mlx = mlx_init(map->window_x, map->window_y, "so_long", 0)))
+	map->mlx = mlx_init(map->window_x, map->window_y, "so_long", 0);
+	if (!map->mlx)
 		ft_exit("window_creation\nmlx_init failed in window_creation!", map);
 	images(map);
 	mlx_loop_hook(map->mlx, &button_key_hook, map);
