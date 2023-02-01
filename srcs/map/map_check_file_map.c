@@ -6,7 +6,7 @@
 /*   By: dhussain <dhussain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 13:00:17 by dhussain          #+#    #+#             */
-/*   Updated: 2023/02/01 15:41:44 by dhussain         ###   ########.fr       */
+/*   Updated: 2023/02/01 17:51:24 by dhussain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ int	map_check_checker(t_mapcheck *mpck, char **map_arr, int x, int y)
 	{
 		mpck->c_count += 1;
 		if (map_check_path(mpck, map_arr, x, y) == -1)
-			exit_printf("Error in map\nnot a valid path to 'C'!");
+			return (exit_printf("Error in map\nnot a valid path to 'C'!"));
 		return (1);
 	}
 	else if (map_arr[y][x] == '0' || map_arr[y][x] == '1')
