@@ -6,11 +6,25 @@
 /*   By: dhussain <dhussain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 15:33:47 by dhussain          #+#    #+#             */
-/*   Updated: 2023/02/01 14:38:16 by dhussain         ###   ########.fr       */
+/*   Updated: 2023/02/01 16:46:14 by dhussain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
+
+void	free_mapcopy(char **map_copy, int y)
+{
+	if (y > 1)
+	{
+		while (y >= 0)
+		{
+			free(map_copy[y]);
+			y--;
+		}
+	}
+	free(map_copy);
+	return ;
+}
 
 void	free_structmap(t_map *map)
 {

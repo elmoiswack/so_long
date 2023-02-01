@@ -6,7 +6,7 @@
 /*   By: dhussain <dhussain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 13:00:14 by dhussain          #+#    #+#             */
-/*   Updated: 2023/02/01 15:11:01 by dhussain         ###   ########.fr       */
+/*   Updated: 2023/02/01 16:41:22 by dhussain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	**map_check_file(t_map *map, t_mapcheck *mpck, char **argv)
 	str = ft_calloc(1, sizeof(char));
 	if (!str)
 		free_checkers_failed(map, mpck,
-		"malloc\nallocation of str has failed in map_line!");
+			"malloc\nallocation of str has failed in map_line!");
 	map_str = map_line(fd, str);
 	if (!map_str)
 	{
@@ -34,13 +34,10 @@ char	**map_check_file(t_map *map, t_mapcheck *mpck, char **argv)
 	}
 	close (fd);
 	map->map = ft_split(map_str, '\n');
+	free(map_str);
 	if (!map->map)
-	{
-		free(map_str);
 		free_checkers_failed(map, mpck,
 			"malloc\nallocation of map->map has failed in map_check_file!");
-	}
-	free(map_str);
 	return (map_check_final(map, mpck));
 }
 

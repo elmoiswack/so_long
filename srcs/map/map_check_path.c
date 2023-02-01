@@ -6,7 +6,7 @@
 /*   By: dhussain <dhussain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 13:49:48 by dhussain          #+#    #+#             */
-/*   Updated: 2023/02/01 16:29:48 by dhussain         ###   ########.fr       */
+/*   Updated: 2023/02/01 16:46:07 by dhussain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,18 +80,15 @@ int	map_check_p(t_mapcheck *mpck, char **map_arr, t_pathcheck *phck)
 	return (-1);
 }
 
-void	free_mapcopy(char **map_copy, int y)
+char	*map_copy_function_helper(char **map_arr, char **map_copy, int x, int y)
 {
-	if (y > 1)
+	while (map_arr[y][x])
 	{
-		while (y >= 0)
-		{
-			free(map_copy[y]);
-			y--;
-		}
+		map_copy[y][x] = map_arr[y][x];
+		x++;
 	}
-	free(map_copy);
-	return ;
+	map_copy[y][x] = '\0';
+	return (map_copy[y]);
 }
 
 char	**map_copy_function(char **map_arr, t_mapcheck *mpck)
@@ -101,6 +98,7 @@ char	**map_copy_function(char **map_arr, t_mapcheck *mpck)
 	char	**map_copy;
 
 	y = 0;
+	x = 0;
 	map_copy = malloc((mpck->y_max + 2) * sizeof(char *));
 	if (!map_copy)
 		return (NULL);
@@ -112,13 +110,7 @@ char	**map_copy_function(char **map_arr, t_mapcheck *mpck)
 			free_mapcopy(map_copy, y);
 			return (NULL);
 		}
-		x = 0;
-		while (map_arr[y][x])
-		{
-			map_copy[y][x] = map_arr[y][x];
-			x++;
-		}
-		map_copy[y][x] = '\0';
+		map_copy[y] = map_copy_function_helper(map_arr, map_copy, x, y);
 		y += 1;
 	}
 	map_copy[y] = NULL;
