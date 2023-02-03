@@ -6,7 +6,7 @@
 /*   By: dhussain <dhussain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 15:38:58 by dhussain          #+#    #+#             */
-/*   Updated: 2023/02/01 11:11:55 by dhussain         ###   ########.fr       */
+/*   Updated: 2023/02/03 14:00:24 by dhussain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,10 @@ int	arg_checks(int argc, char *argv[])
 	int		index_1;
 	int		index_2;
 
+	if (argc < 2)
+		return (exit_printf("Error in arg_checks\ntoo few arguments!"));
+	if (argc > 2)
+		return (exit_printf("Error in arg_checks\ntoo much arguments!"));
 	index_1 = ft_strlen(argv[1]);
 	index_1 -= 4;
 	index_2 = 0;
@@ -41,16 +45,6 @@ int	arg_checks(int argc, char *argv[])
 	if (!str)
 		return (exit_printf("Error in arg_checks\nallocation failed of str!"));
 	ft_strlcpy(str, ".ber", 4);
-	if (argc < 2)
-	{
-		free(str);
-		return (exit_printf("Error in arg_checks\ntoo few arguments!"));
-	}
-	if (argc > 2)
-	{
-		free(str);
-		return (exit_printf("Error in arg_checks\ntoo much arguments!"));
-	}	
 	if (str_check(str, argv, index_1, index_2) == -1)
 		return (-1);
 	free(str);
